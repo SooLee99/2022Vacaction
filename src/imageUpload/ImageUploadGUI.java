@@ -82,7 +82,7 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 		
 		panelWest.add(lblKeyword);
 		panelWest.add(lblSave);
-		getContentPane().add(panelWest, BorderLayout.WEST);
+		add(panelWest, BorderLayout.WEST);
 	}
 	
 	private void panelEast() {
@@ -98,20 +98,19 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 		tfSave.setEnabled(false);
 		panelEast.setLayout(null);
 		
-		panelEast.add(tfKeyword);
-		panelEast.add(tfSave);
-		
-		add(panelEast, BorderLayout.EAST);
-		
 		btnOpen = new JButton("열기");
 		btnOpen.setBounds(110, 50, 70, 20);
 		btnOpen.addActionListener(this);
-		panelEast.add(btnOpen);
 		
 		btnSave = new JButton("저장");
-		btnSave.setBounds(0, 90, 180, 23);
+		btnSave.setBounds(0, 90, 180, 20);
 		btnSave.addActionListener(this);
+		
+		panelEast.add(tfKeyword);
+		panelEast.add(tfSave);
+		panelEast.add(btnOpen);
 		panelEast.add(btnSave);
+		add(panelEast, BorderLayout.EAST);
 		
 	}
 
@@ -142,8 +141,8 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 				keywordSearch = tfKeyword.getText();
 				saveSearch = tfSave.getText()+"\\";
 				
-			String restApiKey = "9fe52013af1c347f70a2ce56386eabbf";  // 개인 rest-api 키 입력
-
+			//String restApiKey = 
+			
 			try {
 				String text = URLEncoder.encode(keywordSearch, "UTF-8");
 				String postParams = "src_lang=kr&target_lang=en&query=" + text;  // 파라미터
