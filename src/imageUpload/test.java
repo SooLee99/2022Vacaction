@@ -20,7 +20,7 @@ import org.json.simple.parser.JSONParser;
 public class test {
 
 	public static void main(String[] args) {
-		//String restApiKey = 
+		String restApiKey = "";  // 개인 rest-api 키 입력
 
 		try {
 			String text = URLEncoder.encode("펭수", "UTF-8");
