@@ -143,8 +143,7 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 				keywordSearch = tfKeyword.getText();
 				saveSearch = tfSave.getText() + "\\";
 
-				// String restApiKey = "9fe52013af1c347f70a2ce56386eabbf"; // 개인 rest-api 키 입력
-				String restApiKey = "d8247c50e4d5c725e468c4ef368a386b";
+				String restApiKey = "";
 
 				try {
 					String text = URLEncoder.encode(keywordSearch, "UTF-8");
