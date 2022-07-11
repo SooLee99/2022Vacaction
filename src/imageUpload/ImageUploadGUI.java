@@ -48,6 +48,7 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 	private String saveSearch;
 	private JFileChooser jfc;
 	private File dir;
+	private JPanel panelSouth;
 
 	public ImageUploadGUI() {
 		setTitle("사진 모으기 프로젝트");
@@ -59,7 +60,7 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 
 		lblNorth = new JLabel("카카오 Open API 사진 모으기 프로젝트");
 		lblNorth.setFont(new Font("나눔고딕", Font.BOLD, 15));
-		lblNorth.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+		lblNorth.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		lblNorth.setHorizontalAlignment(JLabel.CENTER);
 		getContentPane().add(lblNorth, BorderLayout.NORTH);
 
@@ -75,16 +76,16 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 		panelWest.setPreferredSize(new Dimension(100, 100));
 		panelWest.setBorder(BorderFactory.createEmptyBorder(15, 10, 0, 0));
 
-		lblKeyword = new JLabel("키워드 검색");
+		lblKeyword = new JLabel("키워드 검색   ");
 		lblKeyword.setFont(new Font("나눔고딕", Font.BOLD, 12));
 
-		lblSave = new JLabel("저장 위치   ");
+		lblSave = new JLabel("저장 위치      ");
 		lblSave.setFont(new Font("나눔고딕", Font.BOLD, 12));
 		lblSave.setBorder(BorderFactory.createEmptyBorder(11, 0, 0, 0));
 
 		panelWest.add(lblKeyword);
 		panelWest.add(lblSave);
-		add(panelWest, BorderLayout.WEST);
+		getContentPane().add(panelWest, BorderLayout.WEST);
 	}
 
 	private void panelEast() {
@@ -104,15 +105,19 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 		btnOpen.setBounds(110, 50, 70, 20);
 		btnOpen.addActionListener(this);
 
-		btnSave = new JButton("저장");
-		btnSave.setBounds(0, 90, 180, 20);
-		btnSave.addActionListener(this);
-
 		panelEast.add(tfKeyword);
 		panelEast.add(tfSave);
 		panelEast.add(btnOpen);
-		panelEast.add(btnSave);
+		
 		add(panelEast, BorderLayout.EAST);
+		
+		panelSouth = new JPanel();
+		panelSouth.setBorder(BorderFactory.createEmptyBorder(0, 0, 18, 0));
+		btnSave = new JButton("저장");
+		btnSave.setPreferredSize(new Dimension(256, 20));
+		btnSave.addActionListener(this);
+		panelSouth.add(btnSave);
+		add(panelSouth, BorderLayout.SOUTH);
 
 	}
 
@@ -143,7 +148,8 @@ public class ImageUploadGUI extends JFrame implements ActionListener {
 				keywordSearch = tfKeyword.getText();
 				saveSearch = tfSave.getText() + "\\";
 
-				String restApiKey = "";
+				// String restApiKey = "9fe52013af1c347f70a2ce56386eabbf"; // 개인 rest-api 키 입력
+				String restApiKey = "d8247c50e4d5c725e468c4ef368a386b";
 
 				try {
 					String text = URLEncoder.encode(keywordSearch, "UTF-8");
