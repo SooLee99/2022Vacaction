@@ -147,7 +147,7 @@ public class ImageCollection extends JFrame implements ActionListener {
 				keyword = labeltf.getText();
 				save = tfSL.getText() + "\\";
 
-				String restApiKey = "0d81a3134f5920b7381b8e515b973fe0"; // 개인 rest-api 키 입력
+				String restApiKey = ""; // 개인 rest-api 키 입력
 
 				try {
 					String text = URLEncoder.encode(keyword, "UTF-8");

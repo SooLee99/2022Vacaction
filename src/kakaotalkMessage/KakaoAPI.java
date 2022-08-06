@@ -261,6 +261,6 @@ public class KakaoAPI {
 	public static void main(String[] args) throws JSONException {
 		// 카카오톡 인증 코드, client_id 메서드에 입력
 		KakaoAPI kakaoAPI = new KakaoAPI();
-		kakaoAPI.getAccessToken("U9hoDeKsazE-IgFUymBLYYpGWSRm2gJA5OC43hxpZJrZEfa5lYi-wYBaLpCKSv8l-Ex0iQorDKgAAAGB7WOwmQ", "d8247c50e4d5c725e468c4ef368a386b");
+		kakaoAPI.getAccessToken("");
 	}
 }
