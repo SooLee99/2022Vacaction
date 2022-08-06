@@ -24,9 +24,9 @@ import java.util.HashMap;
 @Service
 public class KakaoAPI {
 
-	static String url;
-	static RestTemplate restTemplate = new RestTemplate();;
-	static HttpHeaders header = new HttpHeaders();
+	String url;
+	RestTemplate restTemplate = new RestTemplate();;
+	HttpHeaders header = new HttpHeaders();
 
 	// 토큰 발급
 	public void getAccessToken(String authorize_code, String client_id) throws JSONException {
@@ -141,7 +141,6 @@ public class KakaoAPI {
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
-			System.out.println("결과 코드가 200이면 토큰 갱신 성공");
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -217,13 +216,14 @@ public class KakaoAPI {
 				result += line;
 			}
 			System.out.println(result);
-		} catch (IOException e) { // TODO Auto-generated
-			// catch { block e.printStackTrace();
+		} catch (IOException e) { 
+			// TODO Auto-generated
+			e.printStackTrace();
 		}
 	}
 
 	// 나에게 카카오톡 메시지 보내는 메서드
-	public static String sendMessageToMe(String access_Token) throws JSONException, IOException { 
+	public String sendMessageToMe(String access_Token) throws JSONException, IOException { 
 		url = "https://kapi.kakao.com/v2/api/talk/memo/default/send";
 		header.add("Authorization", "Bearer " + access_Token);
 
@@ -235,16 +235,14 @@ public class KakaoAPI {
 		System.out.println("---- Input Data Finish ----");
 
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(requestBody, header);
-
 		ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-		System.out.println("finish");
 		System.out.println(response);
 
 		return response.getStatusCode().name();
 	}
 
 	// 메시지 내용 입력하는 메서드
-	private static String buildTemplateObject() throws JSONException {
+	private String buildTemplateObject() throws JSONException {
 		System.out.println("buildTemplateObject 메시지 내용 보내는 메서드");
 		JSONObject templateObject = new JSONObject();
 		JSONObject urlObject = new JSONObject();
@@ -263,6 +261,6 @@ public class KakaoAPI {
 	public static void main(String[] args) throws JSONException {
 		// 카카오톡 인증 코드, client_id 메서드에 입력
 		KakaoAPI kakaoAPI = new KakaoAPI();
-		kakaoAPI.getAccessToken("", "");
+		kakaoAPI.getAccessToken("U9hoDeKsazE-IgFUymBLYYpGWSRm2gJA5OC43hxpZJrZEfa5lYi-wYBaLpCKSv8l-Ex0iQorDKgAAAGB7WOwmQ", "d8247c50e4d5c725e468c4ef368a386b");
 	}
 }

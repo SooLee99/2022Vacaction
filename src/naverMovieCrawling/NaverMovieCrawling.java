@@ -7,7 +7,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class NaverMovieCrawling {//헤어질 결심 영화 리뷰 제목
+	//헤어질 결심 영화 리뷰 제목
+public class NaverMovieCrawling {
 		public static void main(String[] args) {	
 			String url = "https://movie.naver.com/movie/bi/mi/review.naver?code=198413";
 			Document doc = null;
